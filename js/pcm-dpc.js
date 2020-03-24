@@ -11,7 +11,8 @@ function odierno_nazionale() {
             document.getElementById("totale_attualmente_positivi").innerHTML = dati_pcm_dpc[0].totale_attualmente_positivi;
             document.getElementById("dimessi_guariti").innerHTML = dati_pcm_dpc[0].dimessi_guariti;
             document.getElementById("deceduti").innerHTML = dati_pcm_dpc[0].deceduti;
-            document.getElementById("data").innerHTML = "Quadro generale della situazione italiana, aggiornato al " + dati_pcm_dpc[0].data;
+            nuova_data = dati_pcm_dpc[0].data.split(" ")[0].split("-")[2] + "/" + dati_pcm_dpc[0].data.split(" ")[0].split("-")[1] + "/" + dati_pcm_dpc[0].data.split(" ")[0].split("-")[0]
+            document.getElementById("data").innerHTML = "Quadro generale della situazione italiana, aggiornato al " + nuova_data + ", ore " + dati_pcm_dpc[0].data.split(" ")[1];
         });
 }
 
@@ -19,19 +20,26 @@ function storico_nazionale() {
     $.getJSON(
         "https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-json/dpc-covid19-ita-andamento-nazionale.json",
         function (dati_pcm_dpc) {
+
+            var data = [];
+            var totale_casi = [];
+            var totale_attualmente_positivi = [];
+            var nuovi_attualmente_positivi = [];
+
             $.each(dati_pcm_dpc, function (idx, obj) {
-                console.log(obj.data);
-                console.log(obj.stato);
-                console.log(obj.ricoverati_con_sintomi);
-                console.log(obj.terapia_intensiva);
-                console.log(obj.totale_ospedalizzati);
-                console.log(obj.isolamento_domiciliare);
-                console.log(obj.totale_attualmente_positivi);
-                console.log(obj.nuovi_attualmente_positivi);
-                console.log(obj.dimessi_guariti);
-                console.log(obj.deceduti);
-                console.log(obj.totale_casi);
-                console.log(obj.tamponi);
+                data.push(obj.data.split(" ")[0].split("-")[2] + "/" + obj.data.split(" ")[0].split("-")[1]);
+                totale_casi.push(obj.totale_casi);
+                totale_attualmente_positivi.push(obj.totale_attualmente_positivi);
+                nuovi_attualmente_positivi.push(obj.nuovi_attualmente_positivi);
             });
+            
+            graficoVariazioneGiornalieraContagi(data, nuovi_attualmente_positivi);
+            totaleContagiPerGiorno(data,totale_attualmente_positivi);
+
+            /* console.log(data_map); */
+            /* console.log(totale_casi_map); */
+            /* console.log(totale_attualmente_positivi_map); */
+            /* console.log(nuovi_attualmente_positivi_map); */
+            /* console.log("============="); */
         });
 }

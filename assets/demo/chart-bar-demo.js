@@ -4,15 +4,16 @@ Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSyste
 Chart.defaults.global.defaultFontColor = '#292b2c';
 
 // Bar Chart Example
-var ctx = document.getElementById("myBarChart");
+var ctx = document.getElementById("overviewBarChart");
 var myLineChart = new Chart(ctx, {
   type: 'bar',
   data: {
     labels: labels,
     datasets: [{
-      label: "Revenue",
-      backgroundColor: "rgba(2,117,216,1)",
-      borderColor: "rgba(2,117,216,1)",
+      label: "Contagiati",
+      backgroundColor: "rgba(255,15,15,0.3)",
+      borderColor: "rgba(255,15,15,1)",
+      borderWidth: 2,
       data: data,
     }],
   },

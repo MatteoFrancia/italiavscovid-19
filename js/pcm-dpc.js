@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
     odierno_nazionale();
     storico_nazionale();
 });

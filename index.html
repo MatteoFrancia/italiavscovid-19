@@ -13,6 +13,11 @@
         crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js"
         crossorigin="anonymous"></script>
+    <style type="text/css">
+        .card-columns {
+            column-count: 1;
+        }
+    </style>
 </head>
 
 <body class="sb-nav-fixed">
@@ -82,7 +87,7 @@
                     <div class="card-deck" style="height: 20%">
 
                         <div class="card bg-primary text-white">
-                            <div class="card-header text-center"><i class="fas fa-allergies"></i> Casi Totali</div>
+                            <div class="card-header text-center"><i class="fas fa-allergies"></i><br> Casi Totali</div>
                             <div class="card-body text-center">
                                 <h2>
                                     <p class="card-title" id="totale_casi">caricamento...</p>
@@ -91,7 +96,8 @@
                         </div>
 
                         <div class="card bg-danger text-white">
-                            <div class="card-header text-center"><i class="fas fa-stethoscope"></i> Attualmente Positivi
+                            <div class="card-header text-center"><i class="fas fa-stethoscope"></i><br>Attualmente
+                                Positivi
                             </div>
                             <div class="card-body text-center">
                                 <h2>
@@ -101,7 +107,7 @@
                         </div>
 
                         <div class="card bg-success text-white">
-                            <div class="card-header text-center"><i class="fas fa-thumbs-up"></i> Guariti</div>
+                            <div class="card-header text-center"><i class="fas fa-thumbs-up"></i><br>Guariti</div>
                             <div class="card-body text-center">
                                 <h2>
                                     <p class="card-title" id="dimessi_guariti">caricamento...</p>
@@ -110,7 +116,8 @@
                         </div>
 
                         <div class="card bg-dark text-white">
-                            <div class="card-header text-center"><i class="fas fa-skull-crossbones"></i> Deceduti</div>
+                            <div class="card-header text-center"><i class="fas fa-skull-crossbones"></i><br>Deceduti
+                            </div>
                             <div class="card-body text-center">
                                 <h2>
                                     <p class="card-title" id="deceduti">caricamento...</p>
@@ -121,23 +128,20 @@
 
                     <br>
 
-                    <div class="row">
-                        <div class="col-xl-6">
-                            <div class="card mb-4">
-                                <div class="card-header"><i class="fas fa-chart-area mr-1"></i>Variazione giornaliera
-                                    dei contagi</div>
-                                <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
-                            </div>
+                    <div class="card-columns">
+                        <div class="card">
+                            <div class="card-header text-center"><i class="fas fa-chart-area mr-1"></i>Variazione giornaliera
+                                dei contagi</div>
+                            <div class="card-body"><canvas id="overviewLineChart"></canvas></div>
                         </div>
-                        <div class="col-xl-6">
-                            <div class="card mb-4">
-                                <div class="card-header"><i class="fas fa-chart-bar mr-1"></i>Totale contagi per giorno
-                                </div>
-                                <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
+                        <div class="card">
+                            <div class="card-header text-center"><i class="fas fa-chart-bar mr-1"></i>Totale contagi per giorno
                             </div>
+                            <div class="card-body"><canvas id="overviewBarChart"></canvas></div>
                         </div>
                     </div>
-                    <div class="card mb-4">
+
+                    <!-- <div class="card mb-4">
                         <div class="card-header"><i class="fas fa-table mr-1"></i>DataTable Example</div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -623,18 +627,13 @@
                                 </table>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </main>
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid">
                     <div class="d-flex align-items-center justify-content-between small">
-                        <div class="text-muted">Copyright &copy; Your Website 2019</div>
-                        <div>
-                            <a href="#">Privacy Policy</a>
-                            &middot;
-                            <a href="#">Terms &amp; Conditions</a>
-                        </div>
+                        <div class="text-muted">Dati forniti dalla <a href="https://github.com/pcm-dpc/COVID-19" target="_blank">Presidenza del Consiglio dei Ministri - Dipartimento della Protezione Civile</a><div>
                     </div>
                 </div>
             </footer>

@@ -1,0 +1,15 @@
+{
+    "background_color": "purple",
+    "description": "Italy Vs COVID-19",
+    "display": "fullscreen",
+    "icons": [
+      {
+        "src": "assets/img/covid.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      }
+    ],
+    "name": "Italy Vs COVID-19",
+    "short_name": "COVID-19",
+    "start_url": "index.html"
+  }

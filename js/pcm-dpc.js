@@ -15,7 +15,8 @@ function storico_nazionale() {
             var deceduti = [];
 
             $.each(dati_pcm_dpc, function (idx, obj) {
-                data.push(obj.data.split(" ")[0].split("-")[2] + "/" + obj.data.split(" ")[0].split("-")[1]);
+                //2020-02-24T18:00:00
+                data.push(obj.data.split("T")[0].split("-")[2] + "/" + obj.data.split(" ")[0].split("-")[1]);
                 totale_casi.push(obj.totale_casi);
                 totale_attualmente_positivi.push(obj.totale_attualmente_positivi);
                 nuovi_attualmente_positivi.push(obj.nuovi_attualmente_positivi);

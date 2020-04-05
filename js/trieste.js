@@ -27,16 +27,34 @@ function carica_dati_storico_regionale(data_files, trieste, sgonico) {
             })
             .done(function () {
                 if (trieste.length === data_files.length) {
+                    var trieste_date = [];
+                    var trieste_storico_positivi = [];
+                    trieste.sort((a, b) => (a.values.lu.split(" ")[0].split("/")[2]+a.values.lu.split(" ")[0].split("/")[1]+a.values.lu.split(" ")[0].split("/")[0] > b.values.lu.split(" ")[0].split("/")[2]+b.values.lu.split(" ")[0].split("/")[1]+b.values.lu.split(" ")[0].split("/")[0]) ? 1 : -1);
+                    $.each(trieste, function (idx, obj) {
+                        trieste_date.push(obj.values.lu.split(" ")[0]);
+                        trieste_storico_positivi.push(obj.values.p);
+                    });
                     card_riassuntive_trieste(trieste);
+                    graficoVariazioneGiornalieraContagiTrieste(trieste_date,trieste_storico_positivi);
+                    totaleContagiPerGiornoTrieste(trieste_date,trieste_storico_positivi);
+                    
+                    var sgonico_date = [];
+                    var sgonico_storico_positivi = [];
+                    sgonico.sort((a, b) => (a.values.lu.split(" ")[0].split("/")[2]+a.values.lu.split(" ")[0].split("/")[1]+a.values.lu.split(" ")[0].split("/")[0] > b.values.lu.split(" ")[0].split("/")[2]+b.values.lu.split(" ")[0].split("/")[1]+b.values.lu.split(" ")[0].split("/")[0]) ? 1 : -1);
+                    $.each(sgonico, function (idx, obj) {
+                        sgonico_date.push(obj.values.lu.split(" ")[0]);
+                        sgonico_storico_positivi.push(obj.values.p);
+                    });
                     card_riassuntive_sgonico(sgonico);
+                    
+                    //graficoVariazioneGiornalieraContagiTrieste();
+                    //totaleContagiPerGiornoTrieste();
                 };
             });
     });
 }
 
 function card_riassuntive_trieste(trieste) {
-    trieste.sort((a, b) => (a.values.lu.split(" ")[0].split("/")[2]+a.values.lu.split(" ")[0].split("/")[1]+a.values.lu.split(" ")[0].split("/")[0] > b.values.lu.split(" ")[0].split("/")[2]+b.values.lu.split(" ")[0].split("/")[1]+b.values.lu.split(" ")[0].split("/")[0]) ? 1 : -1)
-    
     document.getElementById("quarantena").innerHTML = trieste[trieste.length-1].values.q;
     document.getElementById("positivi").innerHTML = trieste[trieste.length-1].values.p;
     document.getElementById("guariti").innerHTML = trieste[trieste.length-1].values.g;
@@ -72,8 +90,6 @@ function card_riassuntive_trieste(trieste) {
 }
 
 function card_riassuntive_sgonico(sgonico) {
-    sgonico.sort((a, b) => (a.values.lu.split(" ")[0].split("/")[2]+a.values.lu.split(" ")[0].split("/")[1]+a.values.lu.split(" ")[0].split("/")[0] > b.values.lu.split(" ")[0].split("/")[2]+b.values.lu.split(" ")[0].split("/")[1]+b.values.lu.split(" ")[0].split("/")[0]) ? 1 : -1)
-    
     document.getElementById("quarantena_sgonico").innerHTML = sgonico[sgonico.length-1].values.q;
     document.getElementById("positivi_sgonico").innerHTML = sgonico[sgonico.length-1].values.p;
     document.getElementById("guariti_sgonico").innerHTML = sgonico[sgonico.length-1].values.g;
@@ -91,7 +107,7 @@ function card_riassuntive_sgonico(sgonico) {
 
     document.getElementById("data_sgonico").innerHTML = "Comune di Sgonico, aggiornato al " + sgonico[sgonico.length-1].values.lu.split(" ")[0];
     
-    for (var i = 0; i < sgonico.length; i++) {
+    /*for (var i = 0; i < sgonico.length; i++) {
         console.log("[" + i + "] " + sgonico[i].values.lu.split(" ")[0]);
     }
     console.log("quarantena ==> " + sgonico[sgonico.length-1].values.q);
@@ -105,5 +121,5 @@ function card_riassuntive_sgonico(sgonico) {
     console.log(sgonico[sgonico.length-1].values.q - sgonico[sgonico.length-2].values.q);
     console.log(sgonico[sgonico.length-1].values.p - sgonico[sgonico.length-2].values.p);
     console.log(sgonico[sgonico.length-1].values.g - sgonico[sgonico.length-2].values.g);
-    console.log(sgonico[sgonico.length-1].values.d - sgonico[sgonico.length-2].values.d);
+    console.log(sgonico[sgonico.length-1].values.d - sgonico[sgonico.length-2].values.d); */
 }

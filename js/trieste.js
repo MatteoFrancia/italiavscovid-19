@@ -29,27 +29,40 @@ function carica_dati_storico_regionale(data_files, trieste, sgonico) {
             .done(function () {
                 if (trieste.length === data_files.length) {
                     var trieste_date = [];
+                    var trieste_date_shift = [];
                     var trieste_storico_positivi = [];
+                    var trieste_delta_positivi = [];
                     trieste.sort((a, b) => (a.values.lu.split(" ")[0].split("/")[2]+a.values.lu.split(" ")[0].split("/")[1]+a.values.lu.split(" ")[0].split("/")[0] > b.values.lu.split(" ")[0].split("/")[2]+b.values.lu.split(" ")[0].split("/")[1]+b.values.lu.split(" ")[0].split("/")[0]) ? 1 : -1);
                     $.each(trieste, function (idx, obj) {
                         trieste_date.push(obj.values.lu.split(" ")[0]);
                         trieste_storico_positivi.push(obj.values.p);
                     });
+                    for(var i=1;i<trieste_storico_positivi.length;i++) {
+                        trieste_delta_positivi[i-1] = trieste_storico_positivi[i] - trieste_storico_positivi[i-1];
+                        trieste_date_shift[i-1] = trieste_date[i];
+                    }
+
                     card_riassuntive_trieste(trieste);
-                    graficoVariazioneGiornalieraContagiTrieste(trieste_date,trieste_storico_positivi);
+                    graficoVariazioneGiornalieraContagiTrieste(trieste_date_shift,trieste_delta_positivi);
                     totaleContagiPerGiornoTrieste(trieste_date,trieste_storico_positivi);
                     
                     var sgonico_date = [];
+                    var sgonico_date_shift = [];
                     var sgonico_storico_positivi = [];
+                    var sgonico_delta_positivi = [];
                     sgonico.sort((a, b) => (a.values.lu.split(" ")[0].split("/")[2]+a.values.lu.split(" ")[0].split("/")[1]+a.values.lu.split(" ")[0].split("/")[0] > b.values.lu.split(" ")[0].split("/")[2]+b.values.lu.split(" ")[0].split("/")[1]+b.values.lu.split(" ")[0].split("/")[0]) ? 1 : -1);
                     $.each(sgonico, function (idx, obj) {
                         sgonico_date.push(obj.values.lu.split(" ")[0]);
                         sgonico_storico_positivi.push(obj.values.p);
                     });
+                    for(var i=1;i<trieste_storico_positivi.length;i++) {
+                        sgonico_delta_positivi[i-1] = sgonico_storico_positivi[i] - sgonico_storico_positivi[i-1];
+                        sgonico_date_shift[i-1] = sgonico_date[i];
+                    }
+
                     card_riassuntive_sgonico(sgonico);
-                    
-                    //graficoVariazioneGiornalieraContagiTrieste();
-                    //totaleContagiPerGiornoTrieste();
+                    graficoVariazioneGiornalieraContagiSgonico(sgonico_date_shift,sgonico_delta_positivi);
+                    totaleContagiPerGiornoSgonico(sgonico_date,sgonico_storico_positivi);
                 };
             });
     });

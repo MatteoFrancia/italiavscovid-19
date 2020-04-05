@@ -643,6 +643,84 @@
                         </div>
                     </div> -->
                 </div>
+                <div class="container-fluid">
+                    <h1 class="mt-4">Sgonico</h1>
+                    <ol class="breadcrumb mb-4">
+                        <li class="breadcrumb-item active" id="data_sgonico">...</li>
+                    </ol>
+                    <div class="card-deck" style="height: 20%">
+
+                        <div class="card bg-primary text-white">
+                            <div class="card-header text-center"><i class="fas fa-allergies"></i><br> In quarantena</div>
+                            <div class="card-body text-center">
+                                <h2>
+                                    <p class="card-title" id="quarantena_sgonico">caricamento...</p>
+                                </h2>
+                            </div>
+                            <div class="card-footer text-center">
+                                <small class="text-white" id="quarantena_differenza_sgonico">caricamento...</small>
+                            </div>
+                        </div>
+
+                        <div class="card bg-danger text-white">
+                            <div class="card-header text-center"><i class="fas fa-stethoscope"></i><br>Attualmente
+                                Positivi
+                            </div>
+                            <div class="card-body text-center">
+                                <h2>
+                                    <p class="card-title" id="positivi_sgonico">caricamento...</p>
+                                </h2>
+                            </div>
+                            <div class="card-footer text-center">
+                                <small class="text-white"
+                                    id="positivi_differenza_sgonico">caricamento...</small>
+                            </div>
+                        </div>
+
+                        <div class="card bg-success text-white">
+                            <div class="card-header text-center"><i class="fas fa-thumbs-up"></i><br>Guariti</div>
+                            <div class="card-body text-center">
+                                <h2>
+                                    <p class="card-title" id="guariti_sgonico">caricamento...</p>
+                                </h2>
+                            </div>
+                            <div class="card-footer text-center">
+                                <small class="text-white" id="guariti_differenza_sgonico">caricamento...</small>
+                            </div>
+                        </div>
+
+                        <div class="card bg-dark text-white">
+                            <div class="card-header text-center"><i class="fas fa-skull-crossbones"></i><br>Deceduti
+                            </div>
+                            <div class="card-body text-center">
+                                <h2>
+                                    <p class="card-title" id="morti_sgonico">caricamento...</p>
+                                </h2>
+                            </div>
+                            <div class="card-footer text-center">
+                                <small class="text-white" id="morti_differenza_sgonico">caricamento...</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br>
+
+                    <div class="card-columns">
+                        <div class="card">
+                            <div class="card-header text-center"><i class="fas fa-chart-area mr-1"></i>Variazione
+                                giornaliera
+                                dei contagi</div>
+                            <div class="card-body"><canvas id="overviewLineChart_sgonico"></canvas></div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header text-center"><i class="fas fa-chart-bar mr-1"></i>Totale contagi per
+                                giorno
+                            </div>
+                            <div class="card-body"><canvas id="overviewBarChart_sgonico"></canvas></div>
+                        </div>
+                    </div>
+                </div>
+
             </main>
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid">

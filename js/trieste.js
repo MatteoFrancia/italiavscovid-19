@@ -12,7 +12,8 @@ $(document).ready(function () {
         "https://raw.githubusercontent.com/MatteoFrancia/italiavscovid19/master/assets/data/20200408_FVG.json",
         "https://raw.githubusercontent.com/MatteoFrancia/italiavscovid19/master/assets/data/20200409_FVG.json",
         "https://raw.githubusercontent.com/MatteoFrancia/italiavscovid19/master/assets/data/20200411_FVG.json",
-        "https://raw.githubusercontent.com/MatteoFrancia/italiavscovid19/master/assets/data/20200412_FVG.json"
+        "https://raw.githubusercontent.com/MatteoFrancia/italiavscovid19/master/assets/data/20200412_FVG.json",
+        "https://raw.githubusercontent.com/MatteoFrancia/italiavscovid19/master/assets/data/20200413_FVG.json"
     ];
     var trieste = [];
     var sgonico = [];
